@@ -1,8 +1,9 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
 ###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
-###     Accepted File Extensions: .7z .bin .gen .md .sg .smd .zip
+###     Accepted File Extensions: sna .szx .z80 .tap .tzx .gz .udi .mgt .img .trd .scl .dsk
 ###
 clear
 echo " "
@@ -10,14 +11,14 @@ echo " ======================================================================="
 echo " Welcome to Games Auto Installer for RetroPie (Emulationstation)!"
 echo " This package contains only free -> LEGAL GAMES!"
 echo " Copyright goes to the owner of the particular game."
-echo " Last update: 11th October 2018"
+echo " Last update: 19th November 2018"
 echo " "
 echo " #######################################################################"
 echo " WARNING!! This installer will remove existing ROMs & GAMELISTS!"
 echo " #######################################################################"
 echo " "
-echo " List of all Homebrew games, which will be installed for Sega MegaDrive/"
-echo " Genesis System can be found on: https://github.com/retrobrews/md-games"
+echo " List of all Homebrew games, which will be installed for ZX Spectrum"
+echo " can be found on: https://github.com/retrobrews/zxspectrum-games"
 
 echo " "
 echo " Please wait until end of installation."
@@ -37,25 +38,21 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "megadrive" ]; then
-mkdir megadrive
+cd /media/fat/games/zxspectrum
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd megadrive
+cd /media/fat/games/zxspectrum/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/md-games/zip/master'
-unzip master.zip
-mv -v md-games-master/* /home/pi/RetroPie/roms/megadrive > /dev/null
-rm -rf md-games-master
-rm *.zip
-### remove README.md --> md is megadrive extension
-cd /home/pi/RetroPie/roms/megadrive/
-rm README.md
-cd ~
+wget --no-check-certificate -q -O zxs_homebrew.zip 'https://codeload.github.com/retrobrews/zxspectrum-games/zip/master'
+#unzip master.zip
+#mv -v zxspectrum-games-master/* /home/pi/RetroPie/roms/zxspectrum > /dev/null
+#´rm -rf zxspectrum-games-master
+#rm *.zip
 clear
 
 echo " "
@@ -66,34 +63,6 @@ echo " "
 echo "  DOWNLOAD AND EXTRACT... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Sega MegaDrive/Genesis"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "megadrive" ]; then
-mkdir megadrive
-fi
-cd megadrive
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/megadrive/gamelist.xml /home/pi/.emulationstation/gamelists/megadrive > /dev/null
-sleep 2
-
-cd /home/pi
-rm md-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Sega MegaDrive/Genesis"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -114,5 +83,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation

@@ -1,8 +1,9 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
-###     Auto Installer of free Homebrew ROMS for MiSTer/Retropie/Emulationstation!
+###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
-###     Accepted File Extensions: .7z .a26 .bin .gz .rom .zip
+###     Accepted File Extensions: .crt .d64 .g64 .t64 .tap .x64 .prg
 ###
 clear
 echo " "
@@ -10,14 +11,14 @@ echo " ======================================================================="
 echo " Welcome to Games Auto Installer for RetroPie (Emulationstation)!"
 echo " This package contains only free -> LEGAL GAMES!"
 echo " Copyright goes to the owner of the particular game."
-echo " Last update: 19th November 2018"
+echo " Last update: 23th November 2018"
 echo " "
 echo " #######################################################################"
 echo " WARNING!! This installer will remove existing ROMs & GAMELISTS!"
 echo " #######################################################################"
 echo " "
-echo " List of all Homebrew games, which will be installed for Atari 2600"
-echo " can be found on: https://github.com/retrobrews/atari2600-games"
+echo " List of all Homebrew games, which will be installed for Commodore 64"
+echo " can be found on: https://github.com/retrobrews/c64-games"
 
 echo " "
 echo " Please wait until end of installation."
@@ -37,21 +38,21 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "atari2600" ]; then
-mkdir atari2600
+cd /media/fat/games/c64
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd atari2600
+cd /media/fat/games/c64/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/atari2600-games/zip/master'
-unzip master.zip
-mv -v atari2600-games-master/* /home/pi/RetroPie/roms/atari2600 > /dev/null
-rm -rf atari2600-games-master
-rm *.zip
+wget --no-check-certificate -q -O c64_homebrew.zip 'https://codeload.github.com/retrobrews/c64-games/zip/master'
+#unzip master.zip
+#mv -v c64-games-master/* /home/pi/RetroPie/roms/c64 > /dev/null
+#rm -rf c64-games-master
+#rm *.zip
 clear
 
 echo " "
@@ -62,34 +63,6 @@ echo " "
 echo "  DOWNLOAD AND EXTRACT... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Atari 2600 System"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "atari2600" ]; then
-mkdir atari2600
-fi
-cd atari2600
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/atari2600/gamelist.xml /home/pi/.emulationstation/gamelists/atari2600 > /dev/null
-sleep 2
-
-cd /home/pi
-rm a2600-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Atari 2600 System"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -110,5 +83,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation

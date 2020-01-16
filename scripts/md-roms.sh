@@ -1,8 +1,9 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
 ###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
-###     Accepted File Extensions: .7z .bin .sms .zip
+###     Accepted File Extensions: .7z .bin .gen .md .sg .smd .zip
 ###
 clear
 echo " "
@@ -16,8 +17,8 @@ echo " #######################################################################"
 echo " WARNING!! This installer will remove existing ROMs & GAMELISTS!"
 echo " #######################################################################"
 echo " "
-echo " List of all Homebrew games, which will be installed for Sega Master"
-echo " System can be found on: https://github.com/retrobrews/sms-games"
+echo " List of all Homebrew games, which will be installed for Sega MegaDrive/"
+echo " Genesis System can be found on: https://github.com/retrobrews/md-games"
 
 echo " "
 echo " Please wait until end of installation."
@@ -37,22 +38,26 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "mastersystem" ]; then
-mkdir mastersystem
+cd /media/fat/games/genesis
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd mastersystem
+cd /media/fat/games/genesis/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/sms-games/zip/master'
-unzip master.zip
-mv -v sms-games-master/* /home/pi/RetroPie/roms/mastersystem > /dev/null
-rm -rf sms-games-master
-rm *.zip
-clear
+wget --no-check-certificate -q -O md_homebrew.zip 'https://codeload.github.com/retrobrews/md-games/zip/master'
+#unzip master.zip
+#mv -v md-games-master/* /home/pi/RetroPie/roms/megadrive > /dev/null
+#rm -rf md-games-master
+#rm *.zip
+### remove README.md --> md is megadrive extension
+#cd /home/pi/RetroPie/roms/megadrive/
+#rm README.md
+#cd ~
+#clear
 
 echo " "
 echo " ======================================================================="
@@ -62,34 +67,6 @@ echo " "
 echo "  DOWNLOAD AND EXTRACT... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Sega Master System"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "mastersystem" ]; then
-mkdir mastersystem
-fi
-cd mastersystem
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/mastersystem/gamelist.xml /home/pi/.emulationstation/gamelists/mastersystem > /dev/null
-sleep 2
-
-cd /home/pi
-rm sms-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Sega Master System"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -110,5 +87,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation

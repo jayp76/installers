@@ -1,8 +1,9 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
 ###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
-###     .zip .nes .smc .sfc .fig .swc .mgd .fds
+###     Accepted File Extensions: .zip .smc .sfc .fig .swc
 ###
 clear
 echo " "
@@ -16,8 +17,8 @@ echo " #######################################################################"
 echo " WARNING!! This installer will remove existing ROMs & GAMELISTS!"
 echo " #######################################################################"
 echo " "
-echo " List of All Homebrew games, which will be installed for NES"
-echo " can be found on: https://github.com/retrobrews/nes-games"
+echo " List of all Homebrew games, which will be installed for SNES"
+echo " can be found on: https://github.com/retrobrews/snes-games"
 
 echo " "
 echo " Please wait until end of installation."
@@ -37,22 +38,22 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "nes" ]; then
-mkdir nes
+cd /media/fat/games/snes
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd nes
+cd /media/fat/games/snes/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/nes-games/zip/master'
-unzip master.zip
-mv -v nes-games-master/* /home/pi/RetroPie/roms/nes > /dev/null
-rm -rf nes-games-master
-rm *.zip
-clear
+wget --no-check-certificate -q -O snes_homebrew.zip 'https://codeload.github.com/retrobrews/snes-games/zip/master'
+#unzip master.zip
+#mv -v snes-games-master/* /home/pi/RetroPie/roms/snes > /dev/null
+#rm -rf snes-games-master
+#rm *.zip
+#clear
 
 echo " "
 echo " ======================================================================="
@@ -62,34 +63,6 @@ echo " "
 echo "  DOWNLOAD AND EXTRACT... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Nintendo Entertainment System"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "nes" ]; then
-mkdir nes
-fi
-cd nes
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/nes/gamelist.xml /home/pi/.emulationstation/gamelists/nes > /dev/null
-sleep 2
-
-cd /home/pi
-rm nes-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Nintendo Entertainment System"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -110,5 +83,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation

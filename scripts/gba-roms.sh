@@ -1,8 +1,9 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
 ###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
-###     Accepted File Extensions: .gb, .gbc
+###     Accepted File Extensions: .7z .gba .zip
 ###
 clear
 echo " "
@@ -16,8 +17,8 @@ echo " #######################################################################"
 echo " WARNING!! This installer will remove existing ROMs & GAMELISTS!"
 echo " #######################################################################"
 echo " "
-echo " List of all Homebrew games, which will be installed for Gameboy Color"
-echo " can be found on: https://github.com/retrobrews/gbc-games"
+echo " List of all Homebrew games, which will be installed for Game Boy Advance"
+echo " can be found on: https://github.com/retrobrews/gba-games"
 
 echo " "
 echo " Please wait until end of installation."
@@ -37,22 +38,23 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "gbc" ]; then
-mkdir gbc
+cd /media/fat/games/gba
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd gbc
+cd /media/fat/games/gba/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
+
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/gbc-games/zip/master'
-unzip master.zip
-mv -v gbc-games-master/* /home/pi/RetroPie/roms/gbc > /dev/null
-rm -rf gbc-games-master
-rm *.zip
-clear
+wget --no-check-certificate -q -O gba_homebrew.zip 'https://codeload.github.com/retrobrews/gba-games/zip/master'
+# unzip master.zip
+# mv -v gba-games-master/* /home/pi/RetroPie/roms/gba > /dev/null
+# rm -rf gba-games-master
+# rm *.zip
+# clear
 
 echo " "
 echo " ======================================================================="
@@ -62,34 +64,6 @@ echo " "
 echo "  DOWNLOAD AND EXTRACT... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Gameboy Color"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "gbc" ]; then
-mkdir gbc
-fi
-cd gbc
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/gbc/gamelist.xml /home/pi/.emulationstation/gamelists/gbc/ > /dev/null
-sleep 2
-
-cd /home/pi
-rm gbc-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Gameboy Color"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -110,5 +84,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation

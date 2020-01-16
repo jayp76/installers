@@ -1,8 +1,9 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
 ###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
-###     Accepted File Extensions: .7z .gba .zip
+###     Accepted File Extensions: .7z .a26 .bin .gz .rom .zip
 ###
 clear
 echo " "
@@ -10,14 +11,14 @@ echo " ======================================================================="
 echo " Welcome to Games Auto Installer for RetroPie (Emulationstation)!"
 echo " This package contains only free -> LEGAL GAMES!"
 echo " Copyright goes to the owner of the particular game."
-echo " Last update: 11th October 2018"
+echo " Last update: 19th November 2018"
 echo " "
 echo " #######################################################################"
 echo " WARNING!! This installer will remove existing ROMs & GAMELISTS!"
 echo " #######################################################################"
 echo " "
-echo " List of all Homebrew games, which will be installed for Game Boy Advance"
-echo " can be found on: https://github.com/retrobrews/gba-games"
+echo " List of all Homebrew games, which will be installed for Atari 2600"
+echo " can be found on: https://github.com/retrobrews/atari2600-games"
 
 echo " "
 echo " Please wait until end of installation."
@@ -37,22 +38,22 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "gba" ]; then
-mkdir gba
+cd /media/fat/games/a2600
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd gba
+cd /media/fat/games/a2600/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/gba-games/zip/master'
-unzip master.zip
-mv -v gba-games-master/* /home/pi/RetroPie/roms/gba > /dev/null
-rm -rf gba-games-master
-rm *.zip
-clear
+wget --no-check-certificate -q -O a2600_homebrew.zip 'https://codeload.github.com/retrobrews/atari2600-games/zip/master'
+#unzip master.zip
+#mv -v atari2600-games-master/* /home/pi/RetroPie/roms/atari2600 > /dev/null
+#rm -rf atari2600-games-master
+#rm *.zip
+#clear
 
 echo " "
 echo " ======================================================================="
@@ -62,34 +63,6 @@ echo " "
 echo "  DOWNLOAD AND EXTRACT... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Game Boy Advance"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "gba" ]; then
-mkdir gba
-fi
-cd gba
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/gba/gamelist.xml /home/pi/.emulationstation/gamelists/gba > /dev/null
-sleep 2
-
-cd /home/pi
-rm gba-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Game Boy Advance"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -110,5 +83,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation

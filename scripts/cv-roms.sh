@@ -1,4 +1,5 @@
 #!/bin/bash
+###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
 ###
 ###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
 ###     !LEGALLY!
@@ -37,22 +38,22 @@ echo " "
 sleep 2
 
 
-cd /home/pi/RetroPie/roms
-if [ ! -d "coleco" ]; then
-mkdir coleco
+cd /media/fat/games/coleco
+if [ ! -d "homebrew" ]; then
+mkdir homebrew
 fi
-cd coleco
+cd /media/fat/games/coleco/homebrew
 ###CLEAN EVERYTHING!
-rm -rf *.*
+#rm -rf *.*
 
 
 ### GAMES
-wget --no-check-certificate -q -O master.zip 'https://codeload.github.com/retrobrews/colecovision-games/zip/master'
-unzip master.zip
-mv -v colecovision-games-master/* /home/pi/RetroPie/roms/coleco > /dev/null
-rm -rf colecovision-games-master
-rm *.zip
-clear
+wget --no-check-certificate -q -O coleco_homebrew.zip 'https://codeload.github.com/retrobrews/colecovision-games/zip/master'
+# unzip master.zip
+# mv -v colecovision-games-master/* /home/pi/RetroPie/roms/coleco > /dev/null
+# rm -rf colecovision-games-master
+# rm *.zip
+# clear
 
 echo " "
 echo " ======================================================================="
@@ -62,34 +63,6 @@ echo " "
 echo "  DOWNLOAD ... done."
 sleep 2
 
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Colecovision"
-echo " ======================================================================="
-echo " "
-sleep 2
-cd ~
-cd /home/pi/.emulationstation/gamelists/
-if [ ! -d "coleco" ]; then
-mkdir coleco
-fi
-cd coleco
-###CLEAN EVERYTHING!
-rm -rf *.*
-mv /home/pi/RetroPie/roms/coleco/gamelist.xml /home/pi/.emulationstation/gamelists/coleco > /dev/null
-sleep 2
-
-cd /home/pi
-rm cv-roms.sh
-clear
-echo " "
-echo " ======================================================================="
-echo " Updating gamelist for Colecovision"
-echo " ======================================================================="
-echo " "
-echo "  GAMELIST UPDATE ... done."
-sleep 2
-clear
 
 echo " "
 echo " ======================================================================="
@@ -111,5 +84,3 @@ echo " "
 echo " Enjoy the new games. Now script will run Emulationstation, please wait."
 echo " "
 echo " "
-sleep 15
-emulationstation
