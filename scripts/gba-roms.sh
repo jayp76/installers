@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/gba
+cd /media/fat/games/GBA
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/gba/homebrew
+cd /media/fat/games/GBA/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/coleco
+cd /media/fat/games/Coleco
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/coleco/homebrew
+cd /media/fat/games/Coleco/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

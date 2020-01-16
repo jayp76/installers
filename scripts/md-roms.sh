@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/genesis
+cd /media/fat/games/Genesis
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/genesis/homebrew
+cd /media/fat/games/Genesis/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

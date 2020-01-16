@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/zxspectrum
+cd /media/fat/games/Spectrum
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/zxspectrum/homebrew
+cd /media/fat/games/Spectrum/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/snes
+cd /media/fat/games/SNES
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/snes/homebrew
+cd /media/fat/games/SNES/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

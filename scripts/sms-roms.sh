@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/sms
+cd /media/fat/games/SMS
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/sms/homebrew
+cd /media/fat/games/SMS/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

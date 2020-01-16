@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/a2600
+cd /media/fat/games/Atari2600
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/a2600/homebrew
+cd /media/fat/games/Atari2600/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

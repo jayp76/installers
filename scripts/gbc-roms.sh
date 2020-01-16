@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/Gameboy
+cd /media/fat/games/GameBoy
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/Gameboy/homebrew
+cd /media/fat/games/GameBoy/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 

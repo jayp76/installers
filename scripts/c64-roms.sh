@@ -38,11 +38,11 @@ echo " "
 sleep 2
 
 
-cd /media/fat/games/c64
+cd /media/fat/games/C64
 if [ ! -d "homebrew" ]; then
 mkdir homebrew
 fi
-cd /media/fat/games/c64/homebrew
+cd /media/fat/games/C64/homebrew
 ###CLEAN EVERYTHING!
 #rm -rf *.*
 
