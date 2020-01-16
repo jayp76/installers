@@ -1,6 +1,6 @@
 #!/bin/bash
 ###
-###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
+###     Auto Installer of free Homebrew ROMS for MiSTer/Retropie/Emulationstation!
 ###     !LEGALLY!
 ###     Accepted File Extensions: .7z .a26 .bin .gz .rom .zip
 ###
