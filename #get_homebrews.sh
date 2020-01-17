@@ -1,34 +1,38 @@
 #!/bin/bash
-###		Thanks goes to retrobrews. Scripts were adapted to use with MiSTer
-###
-###     Auto Installer of free Homebrew ROMS for Retropie/Emulationstation!
-###     !LEGALLY!
-###     Accepted File Extensions: .7z .a26 .bin .gz .rom .zip
-###
 
-URL="https://github.com"
-SCRIPT_URL="${URL}/MiSTer-devel/Updater_script_MiSTer/blob/master/mister_updater.sh"
-CURL_RETRY="--connect-timeout 15 --max-time 120 --retry 3 --retry-delay 5 --silent --insecure"
+function getbrew {
+  echo " ======================================================================="
+  echo " Downloading ${1}-ROMs from retrobrews, please wait..."
+  echo " List of all Homebrew games which will be installed for ${1}"
+  echo " can be found on: https://github.com/retrobrews/${3}"
 
-echo " "
+
+  [[ -d /media/fat/games/${1}/homebrew ]] && cd /media/fat/games/Atari2600/homebrew || mkdir -p /media/fat/games/${1}/homebrew ; cd /media/fat/games/${1}/homebrew
+  [[ -f /media/fat/games/${1}/homebrew/${2} ]] && mv ${2} master
+  wget --no-check-certificate -Nq 'https://codeload.github.com/retrobrews/'${3}'/zip/master' && mv master ${2}
+}
+
+getbrew Atari2600 a2600_homebrew.zip atari2600-games
+getbrew C64 c64_homebrew.zip c64-games
+getbrew Coleco coleco_homebrew.zip colecovision-games
+getbrew GBA gba_homebrew.zip gba-games
+getbrew GameBoy gameboy_homebrew.zip gbc-games
+getbrew Genesis md_homebrew.zip md-games
+getbrew NES nes_homebrew.zip nes-games
+getbrew SMS sms_homebrew.zip sms-games
+getbrew SNES snes_homebrew.zip snes-games
+getbrew Spectrum zxs_homebrew.zip zxspectrum-games
+
 echo " ======================================================================="
-echo " Downloading and Extracting Scripts to tmp directory, please wait..."
+echo " Thanks goes to retrobrews (Homebrew Collection).                       "
+echo " Scripts were adapted to use with MiSTer. Revamp by RealLarry. Many Thx "
+
+echo "    _____  .__  ____________________           "
+echo "   /     \ |__|/   _____/\__    ___/__________ "
+echo "  /  \ /  \|  |\_____  \   |    |_/ __ \_  __ \\"
+echo " /    Y    \  |/        \  |    |\  ___/|  | \/"
+echo " \____|__  /__/_______  /  |____| \___  >__|   "
+echo "         \/           \/              \/       "
 echo " ======================================================================="
-echo " "
-sleep 2
-
-
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/a2600-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/c64-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/cv-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/gba-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/gbc-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/md-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/nes-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/sms-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/snes-roms.sh | bash -
-curl ${CURL_RETRY} https://raw.githubusercontent.com/jayp76/installers/testing/scripts/zxs-roms.sh | bash -
-
 
 exit 0
-
