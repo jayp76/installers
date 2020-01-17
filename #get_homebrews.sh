@@ -1,6 +1,7 @@
 #!/bin/bash
 URL="https://github.com"
-CURL_RETRY="--connect-timeout 15 --max-time 120 --retry 3 --retry-delay 5 --silent"
+CURL_RETRY="--connect-timeout 15 --max-time 120 --retry 3 --retry-delay 5"
+S_OPT="--silent"
 # test network and https by pinging the target website 
 SSL_SECURITY_OPTION=""
 ALLOW_INSECURE_SSL="true"
@@ -38,7 +39,7 @@ function getbrew {
   [[ -d /media/fat/games/${1}/homebrew ]] && cd /media/fat/games/Atari2600/homebrew || mkdir -p /media/fat/games/${1}/homebrew ; cd /media/fat/games/${1}/homebrew
   [[ -f /media/fat/games/${1}/homebrew/${2} ]] && mv ${2} master
   # wget --no-check-certificate -Nq 'https://codeload.github.com/retrobrews/'${3}'/zip/master'  && mv master ${2}
-  curl --connect-timeout 15 --max-time 120 --retry 3 --retry-delay 5 --insecure -o ${2} 'https://codeload.github.com/retrobrews/'${3}'/zip/master'
+  curl ${CURL_RETRY} --insecure -o ${2} 'https://codeload.github.com/retrobrews/'${3}'/zip/master' && mv master ${2}
 }
 
 getbrew Atari2600 a2600_homebrew.zip atari2600-games
